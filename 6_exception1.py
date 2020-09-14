@@ -16,7 +16,7 @@ def ask_user():
       conversation = {"Как дела": "Хорошо!", "Что делаешь?": "Программирую"}
       while True:
         question  = input()
-        if question in conversation.keys():
+        if question in conversation:
           print (conversation[question])
     
     try:

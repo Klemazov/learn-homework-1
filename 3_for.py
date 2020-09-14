@@ -1,4 +1,4 @@
-"""
+'''
 
 Домашнее задание №1
 
@@ -8,7 +8,7 @@
   школы вида [{'school_class': '4a', 'scores': [3,4,4,5,2]}, ...]
 * Посчитать и вывести средний балл по всей школе.
 * Посчитать и вывести средний балл по каждому классу.
-"""
+'''
 
 def main():
     school_scores = [
@@ -37,14 +37,14 @@ def main():
 
     for classes_dict in school_scores:
         mean = (sum(classes_dict['scores'])/len(classes_dict['scores']))
-        print("средний балл в классе {school_class} \'{mean}\' ".format(school_class = classes_dict['school_class'].upper(), mean = mean))
+        print('средний балл в классе {school_class} \'{mean}\' '.format(school_class = classes_dict['school_class'].upper(), mean = mean))
     school_scores_sum = 0
     for classes_dict in school_scores:
         school_scores_sum += sum(classes_dict['scores'])
     school_scores_mean = school_scores_sum / (len(school_scores * len(classes_dict['scores']))) 
-    print( f"Средний балл по школе: {school_scores_mean}")
+    print( f'Средний балл по школе: {school_scores_mean}')
 
         
     
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()

@@ -15,19 +15,21 @@
 """
 
 def main():
-  age = input('Введите свой возраст: ')
-  try:
-    age = int(age)
-    if age < 6 :
-      print('дуй в детский сад')
-    elif age < 18:
-      print ('дуй в школу')
-    elif age < 23:
-      print('Дуй в институт')
+    age = input('Введите свой возраст: ')
+    try:
+        age = int(age)
+    except ValueError:
+        print('Вы неправильно ввели возраст')
     else:
-      print('Дуй на завод')
-  except ValueError:
-    print('Вы неправильно ввели возраст')
+        if age < 6 :
+            print('дуй в детский сад')
+        elif age < 18:
+            print ('дуй в школу')
+        elif age < 23:
+            print('Дуй в институт')
+        else:
+            print('Дуй на завод')
+  
   
 
 
