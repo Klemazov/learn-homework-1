@@ -16,10 +16,18 @@
 """
 
 def ask_user():
-    """
-    Замените pass на ваш код
-    """
-    pass
+    def ask_user_dict():
+        conversation = {"Как дела": "Хорошо!", "Что делаешь?": "Программирую"}
+        while True:
+          question = input()
+          if question in conversation:
+            print (conversation[question])
+          else:
+            print('не понятно, что ты говоришь')
+           
+    
+    ask_user_dict()
+      
     
 if __name__ == "__main__":
     ask_user()

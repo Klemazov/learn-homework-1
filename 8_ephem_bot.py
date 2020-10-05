@@ -13,8 +13,11 @@
 
 """
 import logging
+import time
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import ephem
+
 
 logging.basicConfig(format='%(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO,
@@ -42,12 +45,30 @@ def talk_to_me(bot, update):
     print(user_text)
     update.message.reply_text(user_text)
  
-
+def planet_func(bot, update):
+    planet_dict = {'Mercury': ephem.Mercury,
+                       'Venus': ephem.Venus,
+                         'Mars': ephem.Mars, 
+                   'Jupiter': ephem.Jupiter,
+                     'Saturn': ephem.Saturn,
+                     'Uranus': ephem.Uranus,
+                   'Neptune': ephem.Neptune,
+                       'Pluto': ephem.Pluto,
+                   }
+    user_planet = update.message.text.split()[1] 
+    print(user_planet)
+    if user_planet in planet_dict:
+        constellation = ephem.constellation(planet_dict[user_planet](update.message['date'])) 
+        update.message.reply_text(constellation)
+    else:
+        
+        update.message.reply_text('Напиши планету')
 def main():
-    mybot = Updater("КЛЮЧ, КОТОРЫЙ НАМ ВЫДАЛ BotFather", request_kwargs=PROXY)
+    mybot = Updater(settings.TOKEN, request_kwargs=PROXY)
     
     dp = mybot.dispatcher
     dp.add_handler(CommandHandler("start", greet_user))
+    dp.add_handler(CommandHandler("planet", planet_func))
     dp.add_handler(MessageHandler(Filters.text, talk_to_me))
     
     mybot.start_polling()
